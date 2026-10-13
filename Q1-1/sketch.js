@@ -1,7 +1,7 @@
 // 神戸市のマーク
 function setup(){
   createCanvas(200, 200);
-  background(255);
+  background(25);
 
   noFill();
   strokeWeight(25);
