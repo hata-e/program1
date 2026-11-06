@@ -3,6 +3,7 @@ let x, y;
 let vx, vy;
 const g = 1;
 
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
   x = width / 2;
@@ -23,17 +24,28 @@ function draw() {
   const groundY = height * 0.8;
   fill(64, 192, 64);
   rect(0, groundY, width, height - groundY);
+
   if (keyIsDown(LEFT_ARROW)) { x -= 5; }
   if (keyIsDown(RIGHT_ARROW)) { x += 5; }
-  if (keyIsDown(UP_ARROW)) { y -= 5; }
-  if (keyIsDown(DOWN_ARROW)) { y += 5; }
+  if (keyIsDown(CONTROL)) {
+    if (keyIsDown(LEFT_ARROW)) { x -= 5; }
+    if (keyIsDown(RIGHT_ARROW)) { x += 5; }
+  }
   // BLANK[1] キャラクターの左右移動
+  if (y > groundY) {
+    y = groundY ;
+    vy = 0;
+  }
 
   // BLANK[2] 重力とジャンプ
+  vy += g;
 
+  if (keyIsDown(UP_ARROW) && y == groundY) {
+    vy = -40;
+  }
   // 速くなりすぎないように制限
   vx = constrain(vx, -20, 20);
-  vy = constrain(vy, -20, 20);
+  vy = constrain(vy, -40, 40);
 
   // 位置を更新
   x += vx;
