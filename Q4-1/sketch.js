@@ -46,4 +46,5 @@ function setup(){
   }
 
   // BLANK[5] 平均点の線を引きます
+  
 }
