@@ -39,9 +39,6 @@ function setup() {
     }
   }
 
-  console.log("平均:", average);
-  console.log("最大:", largest);
-  console.log("最小:", smallest);
 
   // 背景の横線
   const n = 10;
