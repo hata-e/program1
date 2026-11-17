@@ -40,7 +40,7 @@ function draw() {
   // BLANK[2] 重力とジャンプ
   vy += g;
 
-  if (keyIsDown(UP_ARROW) && y == groundY) {
+  if (keyIsDown(UP_ARROW) ) {
     vy = -10;
   }
   // 速くなりすぎないように制限
