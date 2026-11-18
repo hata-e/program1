@@ -1,5 +1,5 @@
 // 最終課題を制作しよう
-
+let k = 0;
 let x = 0;
 let y = 0;
 let vx = 0;
@@ -36,17 +36,75 @@ function draw() {
   y += vy;
 
   // 粒子の表示
-  fill(225, 0, 0, 225);
-  ellipse(x, y, 50, 50);
+  if (k < 3) {
+    fill(225, 0, 0, 225);
+    vx = vx + random(-1, 1);
+    vy = vy + random(-1, 1);
+    if (x > width || x < 0) {
+      vx = -vx
+    }
+    if (y > height || y < 0) {
+      vy = -vy;
+    }
+    vx = constrain(vx, -10, 10);
+    vy = constrain(vy, -10, 10);
+  }
+  else if (k < 7) {
+
+    fill(0, 225, 0, 225);
+    vx += random(-0.05, 0.05);
+    vy += random(-0.1, 0.1);
+    vx = constrain(vx, -1, 1);
+    vy = constrain(vy, -1, 1);
+    if (x > width || x < 0) {
+      vx = -vx
+    }
+    if (y > height || y < 0) {
+      vy = -vy;
+    }
+
+  }
+  else {
+
+    fill(0, 0, 225, 225);
+    
+    y += 0.3;
+
+    // 上下にふわふわ揺れる
+    x += sin(frameCount * 0.03) * 1.5;
+    if (x > width || x < 0) {
+      x-=sin(frameCount * 0.03) * 1.5;
+    }
+    if (y > height || y < 0) {
+      y -= 0.3;
+    }
+
+    vx = constrain(vx, -1, 1);
+    vy = constrain(vy, -1, 1);
+
+  }
+
+  ellipse(x, y, 10, 10);
 }
 
 // クリックした場所に粒子を発生させる
 function mousePressed() {
   x = mouseX;
   y = mouseY;
+  k = random(0, 10)
+  if (k < 3) {
+    vy = 0;
+    vx = 0;
+  }
+  else if (k < 7) {
+    vy = 0;
+    vx = 0;
+  }
+  else {
+    vy = 0;
+    vx = 0;
 
-  vx = random(-5, 5);
-  vy = random(-5, 5);
+  }
 }
 
 function windowResized() {
