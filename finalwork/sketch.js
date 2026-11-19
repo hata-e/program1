@@ -70,13 +70,13 @@ function draw() {
     
     y += 0.3;
 
-    // 上下にふわふわ揺れる
+    
     x += sin(frameCount * 0.03) * 1.5;
-    if (x > width || x < 0) {
-      x-=sin(frameCount * 0.03) * 1.5;
-    }
+  
+     
     if (y > height || y < 0) {
       y -= 0.3;
+      x=mouseX;
     }
 
     vx = constrain(vx, -1, 1);
