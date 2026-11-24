@@ -161,17 +161,17 @@ function draw() {
       }
     }
 
-    let allJoined = true;
+    let allGone = true;
 
     for (let i = 0; i < particle.length; i++) {
       let t = particle[i];
 
-      if (t.alive == true && t.joined == false) {
-        allJoined = false;
+      if (t.alive == true) {
+        allGone = false;
       }
     }
 
-    if (allJoined == true) {
+    if (allGone == true) {
       mode = "clear";
     }
   }
